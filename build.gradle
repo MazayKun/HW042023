@@ -1,15 +1,22 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group 'ru.mikheev.kirill'
 version '1.0-SNAPSHOT'
+
+apply plugin: "java"
+apply plugin: "com.github.johnrengelman.shadow"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+
+    implementation("com.google.guava:guava:${GUAVA_VERSION}")
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
 }
@@ -17,3 +24,11 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+shadowJar {
+    archivesBaseName('fat-jar-file')
+    archiveVersion.set('0.0.2')
+    archiveClassifier.set('')
+    manifest.attributes('Main-Class': 'HelloOtus')
+}
+tasks.build.dependsOn tasks.shadowJar
