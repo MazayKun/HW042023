@@ -29,6 +29,6 @@ shadowJar {
     archivesBaseName('fat-jar-file')
     archiveVersion.set('0.0.2')
     archiveClassifier.set('')
-    manifest.attributes('Main-Class': 'HelloOtus')
+    manifest.attributes('Main-Class': 'ru.mikheev.kirill.hw01gradle.HelloOtus')
 }
 tasks.build.dependsOn tasks.shadowJar
