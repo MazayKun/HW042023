@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'maven-publish'
+}
+
+group 'ru.mikheev.kirill'
+version '1.0'
+
+apply plugin: "java"
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: "maven-publish"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'com.google.auto.service', name: 'auto-service', version: '1.1.1'
+}
+
+shadowJar {
+    archivesBaseName('ToStringAnnotationProcessor')
+    archiveVersion.set('1.0')
+    archiveClassifier.set('')
+}
+tasks.build.dependsOn tasks.shadowJar
+
+publishing {
+    publications {
+        main(MavenPublication) {
+            groupId = 'ru.mikheev.kirill'
+            artifactId = 'ToStringAnnotationProcessor'
+            version = '1.0'
+
+            from components.java
+        }
+    }
+}

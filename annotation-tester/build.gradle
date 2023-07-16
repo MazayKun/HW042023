@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'ru.mikheev.kirill'
+version '1.0'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation("ru.mikheev.kirill:ToStringAnnotationProcessor:1.0")
+    annotationProcessor("ru.mikheev.kirill:ToStringAnnotationProcessor:1.0")
+}
+
+test {
+    useJUnitPlatform()
+}

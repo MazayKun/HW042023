@@ -1,2 +1,4 @@
 rootProject.name = 'GradleDemo'
+include 'ToStringAnnotationProcessor'
+include 'annotation-tester'
 
