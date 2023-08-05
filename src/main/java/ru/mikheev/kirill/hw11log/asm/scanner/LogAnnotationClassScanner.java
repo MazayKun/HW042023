@@ -17,7 +17,7 @@ class LogAnnotationClassScanner extends ClassVisitor {
 
     @Override
     public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
-        if(LOG_ANNOTATIONS_MARKER.equals(descriptor)) {
+        if (LOG_ANNOTATIONS_MARKER.equals(descriptor)) {
             logAnnotationsAlreadyProcessed = true;
         }
         return super.visitAnnotation(descriptor, visible);
@@ -25,7 +25,7 @@ class LogAnnotationClassScanner extends ClassVisitor {
 
     @Override
     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
-        if(!logAnnotationsAlreadyProcessed) {
+        if ( ! logAnnotationsAlreadyProcessed) {
             MethodVisitor mv = super.visitMethod(access, name, descriptor, signature, exceptions);
             return new LogMethodParametersGenerator(mv, access, name, descriptor);
         }
@@ -34,7 +34,7 @@ class LogAnnotationClassScanner extends ClassVisitor {
 
     @Override
     public void visitEnd() {
-        if(!logAnnotationsAlreadyProcessed) {
+        if ( ! logAnnotationsAlreadyProcessed) {
             visitAnnotation(LOG_ANNOTATIONS_MARKER, true);
         }
         super.visitEnd();

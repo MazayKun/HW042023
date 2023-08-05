@@ -6,9 +6,9 @@ public class SecondExample {
 
     @Log
     public static void ifMethod(boolean condition, Object thenBranch, Object elseBranch) {
-        if(condition) {
+        if (condition) {
             System.out.println(thenBranch);
-        }else{
+        } else {
             System.out.println(elseBranch);
         }
     }

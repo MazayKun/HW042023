@@ -15,8 +15,8 @@ class LogMethodParametersInvocationHandler implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
         Object result = method.invoke(realObject, args);
-        if(method.isAnnotationPresent(Log.class)) {
-            for(Object arg : args) {
+        if (method.isAnnotationPresent(Log.class)) {
+            for (Object arg : args) {
                 System.out.println(String.format("executed method: %s, param type: %s, param value: %s", method.getName(), arg.getClass(), arg));
             }
         }

@@ -5,6 +5,7 @@ import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.GeneratorAdapter;
+import org.w3c.dom.TypeInfo;
 
 class LogMethodParametersGenerator extends GeneratorAdapter {
 
@@ -35,18 +36,18 @@ class LogMethodParametersGenerator extends GeneratorAdapter {
 
     @Override
     public void visitCode() {
-        if(isLogAnnotated) {
+        if (isLogAnnotated) {
             printlnObject(
                     () -> visitLdcInsn("executed method: " + methodName),
                     STRING_TYPE_DESCRIPTOR
             );
 
-            for(int i = 0; i < argTypes.length; i++) {
+            for (int i = 0; i < argTypes.length; i++) {
                 Type argType = argTypes[i];
                 int currIndex = i + 1;
 
                 printObject(
-                        () -> visitLdcInsn(currIndex  + " param with type " + argType.getClassName() + ": "),
+                        () -> visitLdcInsn(currIndex + " param with type " + argType.getClassName() + ": "),
                         STRING_TYPE_DESCRIPTOR
                 );
 
@@ -66,7 +67,7 @@ class LogMethodParametersGenerator extends GeneratorAdapter {
     }
 
     private void printlnObject(Runnable objectLoader, String typeDescriptor) {
-        showObject(objectLoader, typeDescriptor,"println");
+        showObject(objectLoader, typeDescriptor, "println");
     }
 
     private void showObject(Runnable objectLoader, String typeDescriptor, String method) {
@@ -78,22 +79,39 @@ class LogMethodParametersGenerator extends GeneratorAdapter {
     }
 
     private TypeInfo getTypeInfo(Type type) {
-        if(type.getDescriptor().length() == 1) {
+        if (type.getDescriptor().length() == 1) {
             int loadOpcode;
             String descriptor;
             switch (type.getDescriptor().charAt(0)) {
-                case 'I', 'C', 'Z': loadOpcode = Opcodes.ILOAD; descriptor = type.getDescriptor(); break;
-                case 'B', 'S': loadOpcode = Opcodes.ILOAD; descriptor = "I"; break;
-                case 'L': loadOpcode = Opcodes.LLOAD; descriptor = type.getDescriptor(); break;
-                case 'F': loadOpcode = Opcodes.FLOAD; descriptor = type.getDescriptor(); break;
-                case 'D': loadOpcode = Opcodes.DLOAD; descriptor = type.getDescriptor(); break;
-                default : throw new UnsupportedOperationException("Не найден дескриптор операции загрузки для простого типа " + type.getClassName());
+                case 'I', 'C', 'Z':
+                    loadOpcode = Opcodes.ILOAD;
+                    descriptor = type.getDescriptor();
+                    break;
+                case 'B', 'S':
+                    loadOpcode = Opcodes.ILOAD;
+                    descriptor = "I";
+                    break;
+                case 'L':
+                    loadOpcode = Opcodes.LLOAD;
+                    descriptor = type.getDescriptor();
+                    break;
+                case 'F':
+                    loadOpcode = Opcodes.FLOAD;
+                    descriptor = type.getDescriptor();
+                    break;
+                case 'D':
+                    loadOpcode = Opcodes.DLOAD;
+                    descriptor = type.getDescriptor();
+                    break;
+                default:
+                    throw new UnsupportedOperationException("There is no loading descriptor found for primary type " + type.getClassName());
             }
             return new TypeInfo(loadOpcode, descriptor);
-        }else{
+        } else {
             return new TypeInfo(Opcodes.ALOAD, "Ljava/lang/Object;");
         }
     }
 
-    private record TypeInfo(int loadOpcode, String descriptor) {}
+    private record TypeInfo(int loadOpcode, String descriptor) {
+    }
 }

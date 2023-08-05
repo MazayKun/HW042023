@@ -10,7 +10,7 @@ public class ObjectFactory {
     @SuppressWarnings("unchecked")
     public static <T> T createInstance(Class<T> targetInterface, Class<? extends T> realization, Object... constructorArgs) {
         Class<?>[] argsTypes = new Class<?>[constructorArgs.length];
-        for(int i = 0; i < constructorArgs.length; i++) {
+        for (int i = 0; i < constructorArgs.length; i++) {
             argsTypes[i] = constructorArgs[i].getClass();
         }
 
@@ -18,7 +18,7 @@ public class ObjectFactory {
         try {
             constructor = realization.getConstructor(argsTypes);
             T realInstance = constructor.newInstance(constructorArgs);
-            return (T)Proxy.newProxyInstance(
+            return (T) Proxy.newProxyInstance(
                     ObjectFactory.class.getClassLoader(),
                     new Class<?>[]{targetInterface},
                     new LogMethodParametersInvocationHandler(realInstance));

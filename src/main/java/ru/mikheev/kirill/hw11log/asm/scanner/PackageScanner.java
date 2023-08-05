@@ -17,23 +17,23 @@ public class PackageScanner {
         File rootDirectory = new File(BUILD_DIRECTORY_PATH + rootPackage.getName().replace('.', '/'));
         LinkedList<File> notProcessedFiles = new LinkedList<>();
         Collections.addAll(notProcessedFiles, rootDirectory.listFiles());
-        while(!notProcessedFiles.isEmpty()) {
+        while ( ! notProcessedFiles.isEmpty()) {
             File currFile = notProcessedFiles.pop();
-            if(currFile.isDirectory()) {
+            if (currFile.isDirectory()) {
                 Collections.addAll(notProcessedFiles, currFile.listFiles());
-            }else{
+            } else {
                 processSingleClass(currFile);
             }
         }
     }
 
     private static void processSingleClass(File classRepresentation) {
-        try(InputStream fis = new FileInputStream(classRepresentation)) {
+        try (InputStream fis = new FileInputStream(classRepresentation)) {
             ClassReader classReader = new ClassReader(fis.readAllBytes());
-            ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_FRAMES|ClassWriter.COMPUTE_MAXS);
+            ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
             classReader.accept(new LogAnnotationClassScanner(classWriter), ClassReader.EXPAND_FRAMES);
 
-            try(OutputStream fos = new FileOutputStream(classRepresentation)) {
+            try (OutputStream fos = new FileOutputStream(classRepresentation)) {
                 fos.write(classWriter.toByteArray());
             }
             Class<?> currClass = Class.forName(classRepresentation.getPath()
@@ -42,7 +42,7 @@ public class PackageScanner {
                     .replace(".class", ""));
             currClass.getClassLoader().loadClass(currClass.getName());
         } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException("Ошибка при попытке дописать вывод информации о входных параметрах в класс", e);
+            throw new RuntimeException("Exception when trying to add output of information about input parameters of class's methods", e);
         }
     }
 }

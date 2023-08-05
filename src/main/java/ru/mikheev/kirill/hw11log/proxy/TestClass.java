@@ -1,6 +1,6 @@
 package ru.mikheev.kirill.hw11log.proxy;
 
-public class TestClass implements TestInterface{
+public class TestClass implements TestInterface {
 
     public TestClass(String str) {
         System.out.println(str);
