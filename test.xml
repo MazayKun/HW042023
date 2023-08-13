@@ -1,0 +1,40 @@
+<ArrayList>
+  <item>
+    <chatIdentifier>Apple</chatIdentifier>
+    <memberMessages>
+      <memberMessages>
+        <last/>
+        <belongNumber>+79215553267</belongNumber>
+        <messageInfoList>
+          <messageInfoList>
+            <sendDate>2023-03-31 14:53:34</sendDate>
+            <text>PROBLEM WARNING - No more free space on the disc</text>
+          </messageInfoList>
+          <messageInfoList>
+            <sendDate>2023-03-31 15:09:15</sendDate>
+            <text>PROBLEM CRITICAL - The weather is not good for today</text>
+          </messageInfoList>
+        </messageInfoList>
+      </memberMessages>
+      <memberMessages>
+        <last>Saint-Petersburg</last>
+        <belongNumber>Apple</belongNumber>
+        <messageInfoList/>
+      </memberMessages>
+      <memberMessages>
+        <last/>
+        <belongNumber>+79219213267</belongNumber>
+        <messageInfoList>
+          <messageInfoList>
+            <sendDate>2023-03-31 14:09:19</sendDate>
+            <text>PROBLEM CRITICAL - There is hight price of the order</text>
+          </messageInfoList>
+          <messageInfoList>
+            <sendDate>2023-03-31 15:53:28</sendDate>
+            <text>PROBLEM WARNING - It's raining like dogs and cats</text>
+          </messageInfoList>
+        </messageInfoList>
+      </memberMessages>
+    </memberMessages>
+  </item>
+</ArrayList>

@@ -1,0 +1,19 @@
+- memberMessages:
+  - last: null
+    messageInfoList:
+    - {sendDate: '2023-03-31T14:53:34', text: PROBLEM WARNING - No more free space
+        on the disc}
+    - {sendDate: '2023-03-31T15:09:15', text: PROBLEM CRITICAL - The weather is not
+        good for today}
+    belongNumber: '+79215553267'
+  - last: Saint-Petersburg
+    messageInfoList: []
+    belongNumber: Apple
+  - last: null
+    messageInfoList:
+    - {sendDate: '2023-03-31T14:09:19', text: PROBLEM CRITICAL - There is hight price
+        of the order}
+    - {sendDate: '2023-03-31T15:53:28', text: PROBLEM WARNING - It's raining like
+        dogs and cats}
+    belongNumber: '+79219213267'
+  chatIdentifier: Apple
