@@ -7,6 +7,20 @@ public class TestClass implements TestInterface {
     }
 
     @Override
+    public int emptyMethod() {
+        return 0;
+    }
+
+    @Override
+    public int arrayMethod(int[] test, int a) {
+        int result = 0;
+        for(int elem : test) {
+            result += elem * a;
+        }
+        return result;
+    }
+
+    @Override
     public Double sqr(Double a) {
         return a * a;
     }

@@ -23,9 +23,9 @@ public class ObjectFactory {
                     new Class<?>[]{targetInterface},
                     new LogMethodParametersInvocationHandler(realInstance));
         } catch (NoSuchMethodException e) {
-            throw new RuntimeException("Ошибка получения конструктора с аргументами: " + Arrays.toString(argsTypes), e);
+            throw new RuntimeException("Error during constructor constructor with arguments extraction: " + Arrays.toString(argsTypes), e);
         } catch (InvocationTargetException | InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException("Ошибка создания экземпляра объекта " + targetInterface, e);
+            throw new RuntimeException("Error during during instance creation" + targetInterface, e);
         }
     }
 
