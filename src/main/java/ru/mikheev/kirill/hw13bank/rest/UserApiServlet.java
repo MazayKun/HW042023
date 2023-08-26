@@ -21,7 +21,7 @@ public class UserApiServlet extends HttpServlet {
 
     @Override
     public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        if (req.getMethod().equalsIgnoreCase("PATCH")){
+        if (req.getMethod().equalsIgnoreCase("PATCH")) {
             doPatch(req, res);
         } else {
             super.service(req, res);
@@ -36,14 +36,14 @@ public class UserApiServlet extends HttpServlet {
             CreateUserRequest request = GlobalContext.getObjectMapper().readValue(bodyContent, CreateUserRequest.class);
             UserDto userDto = GlobalContext.getAtmService().registerNewClient(request.getUserName());
             resp.getWriter().println(GlobalContext.getObjectWriter().writeValueAsString(userDto));
-        }catch (HttpException e) {
+        } catch (HttpException e) {
             resp.setStatus(e.getHttpErrorCode());
             resp.getWriter().println(e.getMessage());
             e.printStackTrace();
-        }catch (UnrecognizedPropertyException e) {
+        } catch (UnrecognizedPropertyException e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             e.printStackTrace();
-        }catch (Exception e) {
+        } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             e.printStackTrace();
         }
@@ -57,14 +57,14 @@ public class UserApiServlet extends HttpServlet {
             DeleteUserRequest request = GlobalContext.getObjectMapper().readValue(bodyContent, DeleteUserRequest.class);
             MoneyBundleDto moneyBundleDto = GlobalContext.getAtmService().unregisterUser(RequestConverter.toDto(request));
             resp.getWriter().println(GlobalContext.getObjectWriter().writeValueAsString(moneyBundleDto));
-        }catch (HttpException e) {
+        } catch (HttpException e) {
             resp.setStatus(e.getHttpErrorCode());
             resp.getWriter().println(e.getMessage());
             e.printStackTrace();
-        }catch (UnrecognizedPropertyException e) {
+        } catch (UnrecognizedPropertyException e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             e.printStackTrace();
-        }catch (Exception e) {
+        } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             e.printStackTrace();
         }
@@ -76,14 +76,14 @@ public class UserApiServlet extends HttpServlet {
                     .collect(Collectors.joining());
             ChangeUserPinRequest request = GlobalContext.getObjectMapper().readValue(bodyContent, ChangeUserPinRequest.class);
             GlobalContext.getAtmService().changePin(request.getUser(), request.getNewPin());
-        }catch (HttpException e) {
+        } catch (HttpException e) {
             resp.setStatus(e.getHttpErrorCode());
             resp.getWriter().println(e.getMessage());
             e.printStackTrace();
-        }catch (UnrecognizedPropertyException e) {
+        } catch (UnrecognizedPropertyException e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             e.printStackTrace();
-        }catch (Exception e) {
+        } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             e.printStackTrace();
         }

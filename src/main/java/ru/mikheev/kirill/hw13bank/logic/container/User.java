@@ -58,7 +58,7 @@ public class User implements Transactional {
 
     @Override
     public void fixState() {
-        if(stateFixed) {
+        if (stateFixed) {
             id = fixedId;
             name = fixedName;
             cardNumber = fixedCardNumber;

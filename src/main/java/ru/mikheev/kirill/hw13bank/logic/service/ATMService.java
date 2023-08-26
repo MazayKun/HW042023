@@ -1,8 +1,8 @@
 package ru.mikheev.kirill.hw13bank.logic.service;
 
 import ru.mikheev.kirill.hw13bank.logic.container.MoneyAccount;
-import ru.mikheev.kirill.hw13bank.logic.storage.CustomStorage;
 import ru.mikheev.kirill.hw13bank.logic.container.User;
+import ru.mikheev.kirill.hw13bank.logic.storage.CustomStorage;
 import ru.mikheev.kirill.hw13bank.util.dto.BalanceDto;
 import ru.mikheev.kirill.hw13bank.util.dto.MoneyBundleDto;
 import ru.mikheev.kirill.hw13bank.util.dto.UserDto;

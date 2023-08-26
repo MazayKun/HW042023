@@ -30,7 +30,7 @@ public class CustomStorage<K, V extends Transactional> implements Transactional 
     public V remove(K key) {
         stateChanged = true;
         V value = data.remove(key);
-        if(value == null) {
+        if (value == null) {
             throw new EntityNotFoundException(entityName);
         }
         return value;
@@ -45,21 +45,21 @@ public class CustomStorage<K, V extends Transactional> implements Transactional 
 
     @Override
     public void fixState() {
-        for(V value : data.values()) {
+        for (V value : data.values()) {
             value.fixState();
         }
     }
 
     @Override
     public void commitState() {
-        for(V value : data.values()) {
+        for (V value : data.values()) {
             value.commitState();
         }
     }
 
     @Override
     public void rollbackState() {
-        for(V value : data.values()) {
+        for (V value : data.values()) {
             value.rollbackState();
         }
     }

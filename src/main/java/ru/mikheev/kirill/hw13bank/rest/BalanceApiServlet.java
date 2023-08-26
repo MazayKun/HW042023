@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class BalanceApiServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
             BalanceDto balance = GlobalContext.getAtmService().getBalance(
                     new UserDto(
@@ -23,14 +23,14 @@ public class BalanceApiServlet extends HttpServlet {
                     )
             );
             resp.getWriter().println(GlobalContext.getObjectWriter().writeValueAsString(balance));
-        }catch (HttpException e) {
+        } catch (HttpException e) {
             resp.setStatus(e.getHttpErrorCode());
             resp.getWriter().println(e.getMessage());
             e.printStackTrace();
-        }catch (UnrecognizedPropertyException e) {
+        } catch (UnrecognizedPropertyException e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             e.printStackTrace();
-        }catch (Exception e) {
+        } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             e.printStackTrace();
         }
