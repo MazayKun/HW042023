@@ -38,7 +38,8 @@ public class Directory implements FileSystemMember {
 
     @Override
     public String getInfo() {
-        StringBuilder sb = new StringBuilder(name + " : {");
+        StringBuilder sb = new StringBuilder(name)
+                .append(" : {");
         if(members != null) {
             for(FileSystemMember member : members) {
                 sb.append(member.getInfo())
