@@ -1,4 +1,4 @@
-package ru.mikheev.kirill.hw13bank.container;
+package ru.mikheev.kirill.hw13bank.logic.container;
 
 public abstract class BanknoteHolder {
 
@@ -20,6 +20,9 @@ public abstract class BanknoteHolder {
         banknotesCounter[BANKNOTE_100_COUNTER_INDEX] = banknote100counter;
         banknotesCounter[BANKNOTE_50_COUNTER_INDEX] = banknote50counter;
         banknotesCounter[BANKNOTE_10_COUNTER_INDEX] = banknote10counter;
+    }
+
+    BanknoteHolder() {
     }
 
     public int get5000BanknotesCount() {
@@ -59,8 +62,8 @@ public abstract class BanknoteHolder {
     protected String toStringByName(String name) {
         StringBuilder result = new StringBuilder();
         boolean emptyResult = true;
-        for(int i = 0; i < 6; i++) {
-            if(banknotesCounter[i] > 0) {
+        for (int i = 0; i < 6; i++) {
+            if (banknotesCounter[i] > 0) {
                 result.append(BANKNOTE_NAMES[i])
                         .append(" : ")
                         .append(banknotesCounter[i])
@@ -69,7 +72,7 @@ public abstract class BanknoteHolder {
             }
         }
         String nameWithLining = name + '\n';
-        if(emptyResult) {
+        if (emptyResult) {
             return "Empty " + nameWithLining;
         } else {
             return result.insert(0, nameWithLining).toString();

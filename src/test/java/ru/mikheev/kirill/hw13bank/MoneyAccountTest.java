@@ -2,21 +2,22 @@ package ru.mikheev.kirill.hw13bank;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.mikheev.kirill.hw13bank.container.MoneyBundle;
-import ru.mikheev.kirill.hw13bank.exception.IllegalATMUsageException;
-import ru.mikheev.kirill.hw13bank.exception.NoMatchingBanknotesException;
-import ru.mikheev.kirill.hw13bank.exception.NotEnoughMoneyInATMException;
+import ru.mikheev.kirill.hw13bank.logic.container.MoneyBundle;
+import ru.mikheev.kirill.hw13bank.util.exception.internal.IllegalATMUsageException;
+import ru.mikheev.kirill.hw13bank.util.exception.internal.NoMatchingBanknotesException;
+import ru.mikheev.kirill.hw13bank.util.exception.internal.NotEnoughMoneyInATMException;
+import ru.mikheev.kirill.hw13bank.logic.container.MoneyAccount;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ATMTest {
+public class MoneyAccountTest {
 
-    ATM testInstance;
+    MoneyAccount testInstance;
 
     @BeforeEach
     void initATM() {
-        testInstance = new ATM();
+        testInstance = new MoneyAccount();
     }
 
     @Test
