@@ -13,7 +13,7 @@ import ru.mikheev.kirill.hw13bank.exception.service.WrongPinException;
 import java.util.function.Supplier;
 
 /**
- * Сервис для работы с пользвоателями и их аккаунтами в системе
+ * Users accounts service
  */
 public class ATMService {
 

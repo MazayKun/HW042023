@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 import static jakarta.servlet.RequestDispatcher.*;
 
 /**
- * Должным образом обрабатывает ошибки при работе с ендпоинтами
+ * Servlet exceptions handler
  */
 public class ErrorHandler extends ErrorPageErrorHandler {
 

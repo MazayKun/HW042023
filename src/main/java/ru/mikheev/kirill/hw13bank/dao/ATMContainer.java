@@ -6,7 +6,7 @@ import ru.mikheev.kirill.hw13bank.exception.internal.UnknownDenominationExceptio
 import java.util.Arrays;
 
 /**
- * Хранилище банкнот
+ * Banknotes storage
  */
 public class ATMContainer implements Transactional {
 

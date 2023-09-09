@@ -7,12 +7,12 @@ import ru.mikheev.kirill.hw13bank.dto.MoneyBundleDto;
 import ru.mikheev.kirill.hw13bank.dto.UserDto;
 
 /**
- * Запрос на пополнение счета
+ * Account replenishment request
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class PutMoneyRequest {
-    private UserDto user; // Информация о пользователе
-    private MoneyBundleDto money; // Набор купюр, которые были внесены
+    private UserDto user; // User data
+    private MoneyBundleDto money; // Set of banknotes to replenishment
 }

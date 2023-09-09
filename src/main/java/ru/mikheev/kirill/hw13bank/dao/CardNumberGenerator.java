@@ -5,7 +5,7 @@ import ru.mikheev.kirill.hw13bank.dao.general.Generator;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * Генератор номеров карт
+ * Card number generator
  */
 public class CardNumberGenerator implements Generator<String> {
 

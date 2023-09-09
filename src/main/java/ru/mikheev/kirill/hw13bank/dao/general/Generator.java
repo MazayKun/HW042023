@@ -1,8 +1,8 @@
 package ru.mikheev.kirill.hw13bank.dao.general;
 
 /**
- * Генерирует объекты заданного типа
- * @param <T> - тип генерируемых объектов
+ * Generate objects of specified type
+ * @param <T> - type of generated objects
  */
 public interface Generator<T> {
 

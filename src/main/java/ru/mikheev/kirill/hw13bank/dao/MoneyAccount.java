@@ -11,7 +11,7 @@ import java.util.Map;
 import static ru.mikheev.kirill.hw13bank.dao.ATMContainer.BANKNOTE_DENOMINATIONS;
 
 /**
- * Объект для работы с хранилищем банкнот
+ * User money storage
  */
 public class MoneyAccount implements Transactional {
 

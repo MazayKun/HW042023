@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Набор купюр разного номинала
+ * Set of banknotes with different denomination
  */
 @Data
 @NoArgsConstructor

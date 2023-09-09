@@ -1,22 +1,22 @@
 package ru.mikheev.kirill.hw13bank.dao.general;
 
 /**
- * Описывает сущности, которые поддерживают транзакции
+ * Interface for entities, which support transactional behaviour
  */
 public interface Transactional {
 
     /**
-     * Фиксация текущего состояния сущности
+     * Fix current state of entity
      */
     void fixState();
 
     /**
-     * Сохранение результата всех операций, которые были проведены над сущностью с момента последней фиксации
+     * Save result of all operations, that was made on this object after state fixation
      */
     void commitState();
 
     /**
-     * Откат состояния сущности до последнего зафиксированного
+     * Rollback entity to last fixed state
      */
     void rollbackState();
 }

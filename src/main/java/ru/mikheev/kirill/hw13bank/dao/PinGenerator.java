@@ -5,7 +5,7 @@ import ru.mikheev.kirill.hw13bank.dao.general.Generator;
 import java.util.Random;
 
 /**
- * Генератор пин кодов для карт
+ * Pin code generator
  */
 public class PinGenerator implements Generator<String> {
 

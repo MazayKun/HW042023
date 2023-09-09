@@ -6,15 +6,15 @@ import lombok.NoArgsConstructor;
 import ru.mikheev.kirill.hw13bank.dto.MoneyBundleDto;
 
 /**
- * Запрос на удаление пользователя
+ * User removal request
  *
- * Ответ - {@link MoneyBundleDto}
+ * Response - {@link MoneyBundleDto}
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeleteUserRequest {
-    private String name; // Имя пользователя
-    private String cardNumber; // Номер карты пользователя
-    private String pin; // Пин код от карты пользователя
+    private String name; // username
+    private String cardNumber; // User card number
+    private String pin; // User card pin
 }

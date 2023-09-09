@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Результат запроса баланса для пользователя
+ * User account balance request result
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class BalanceDto {
-    private int balance; // Текущий баланс карты
+    private int balance; // Current balance of card
 }

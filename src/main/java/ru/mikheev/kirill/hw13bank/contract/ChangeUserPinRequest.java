@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 import ru.mikheev.kirill.hw13bank.dto.UserDto;
 
 /**
- * Сообщение на смену пин кода для пользователя
+ * Pin code change request
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChangeUserPinRequest {
-    private UserDto user; // Данные по пользователю
-    private String newPin; // Новый пин
+    private UserDto user; // User data
+    private String newPin; // new pin
 }

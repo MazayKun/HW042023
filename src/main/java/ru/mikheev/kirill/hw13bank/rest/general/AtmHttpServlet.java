@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.stream.Collectors;
 
 /**
- * Общий класс сервлетов для работы с ATMService
+ * General servlet for ATMService usage
  */
 public abstract class AtmHttpServlet extends HttpServlet {
 
@@ -30,12 +30,12 @@ public abstract class AtmHttpServlet extends HttpServlet {
     }
 
     /**
-     * Конвертирует тело запроса в формате JSON в объект
+     * Covert request body from JSON to java object
      *
-     * @param bodyType - тип объекта тела запроса
-     * @param request - запрос, тело которого нужно конвертировать
-     * @param <O> - тип объекта тела зпроса
-     * @return результат конвертиации тела зпроса в необходимый объект
+     * @param bodyType - body object type
+     * @param request - request, which body should be converted
+     * @param <O> - body object type
+     * @return converting result
      */
     protected <O> O readBodyObject(Class<O> bodyType, HttpServletRequest request) throws IOException {
         String bodyContent = request.getReader().lines()
@@ -44,9 +44,10 @@ public abstract class AtmHttpServlet extends HttpServlet {
     }
 
     /**
-     * Записывает объект в тело ответа в формате JSON
-     * @param object - объект, который нужно записать
-     * @param response - ответ
+     * Write object to response in JSON format
+     *
+     * @param object - Object to write
+     * @param response - response object to result write to
      */
     protected void writeObjectAsJson(Object object, HttpServletResponse response) throws IOException {
         response.getWriter().println(objectWriter.writeValueAsString(object));

@@ -10,7 +10,7 @@ import ru.mikheev.kirill.hw13bank.dao.general.Transactional;
 import java.util.Objects;
 
 /**
- * ѕредставление пользовател€ в системе
+ * User representation
  */
 @Setter
 @Getter

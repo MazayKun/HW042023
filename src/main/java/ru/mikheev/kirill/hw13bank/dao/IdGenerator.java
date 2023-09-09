@@ -5,7 +5,7 @@ import ru.mikheev.kirill.hw13bank.dao.general.Generator;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * Генератор Id в формате Long
+ * Long id generator
  */
 public class IdGenerator implements Generator<Long> {
 

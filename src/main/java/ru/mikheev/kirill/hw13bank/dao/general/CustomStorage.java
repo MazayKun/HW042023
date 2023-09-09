@@ -7,14 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Хранилище объектов с базовыми операциями доступа к ним
+ * In memory objects storage with basic access operation
  *
- * @param <K> - тип уникального ключы объекта
- * @param <V> - тип объекта
+ * @param <K> - type of unique object id
+ * @param <V> - type of object
  */
 public class CustomStorage<K, V extends Transactional> implements Transactional {
 
-    private final String entityName; // Имя хранимых объектов
+    private final String entityName; // Stored entity name
 
     private final Map<K, V> data = new HashMap<>();
 
@@ -23,7 +23,7 @@ public class CustomStorage<K, V extends Transactional> implements Transactional 
     }
 
     /**
-     * Получение объекта по ключу
+     * Get object by id
      */
     public V get(K key) {
         return data.computeIfAbsent(key, stub -> {
@@ -32,9 +32,9 @@ public class CustomStorage<K, V extends Transactional> implements Transactional 
     }
 
     /**
-     * Удаление объекта по ключу
+     * Remove object by id
      *
-     * @return Удаленный объект
+     * @return Removed object
      */
     public V remove(K key) {
         V value = data.remove(key);
@@ -45,9 +45,9 @@ public class CustomStorage<K, V extends Transactional> implements Transactional 
     }
 
     /**
-     * Добавление объекта с новым ключом
+     * Add new object
      *
-     * @throws EntityAlreadyExistsException если объект с данным ключом уже есть в коллекции
+     * @throws EntityAlreadyExistsException if object with the same key already exists in storage
      */
     public void add(K key, V value) {
         if (data.putIfAbsent(key, value) != null) {

@@ -7,14 +7,14 @@ import ru.mikheev.kirill.hw13bank.dto.MoneyBundleDto;
 import ru.mikheev.kirill.hw13bank.dto.UserDto;
 
 /**
- * Запрос на снятие денег
+ * Money withdrawal request
  *
- * Ответ - {@link MoneyBundleDto}
+ * Response - {@link MoneyBundleDto}
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetMoneyRequest {
-    private UserDto user; // Информация о пользователе
-    private int amount; // Количество снимаемых денег
+    private UserDto user; // User data
+    private int amount; // Amount of money to withdrawal
 }

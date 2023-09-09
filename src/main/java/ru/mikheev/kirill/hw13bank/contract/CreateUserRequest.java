@@ -6,13 +6,13 @@ import lombok.NoArgsConstructor;
 import ru.mikheev.kirill.hw13bank.dto.UserDto;
 
 /**
- * Запрос на создание в системе нового пользователя
+ * New user creation request
  *
- * Ответ - {@link UserDto}
+ * Response - {@link UserDto}
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateUserRequest {
-    private String userName; // Имя пользователя
+    private String userName; // New user name
 }
