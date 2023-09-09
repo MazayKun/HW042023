@@ -2,22 +2,22 @@ package ru.mikheev.kirill.hw32executors;
 
 public class DataThread extends Thread {
 
-    private final int accessNumber;
-    private final OrderedWriter orderedWriter;
+    private final int threadNumber;
+    private final DoubleThreadWriter doubleThreadWriter;
 
     private boolean reversed = false;
     private int counter = 1;
 
-    public DataThread(int accessNumber, OrderedWriter orderedWriter) {
-        this.accessNumber = accessNumber;
-        this.orderedWriter = orderedWriter;
+    public DataThread(int threadNumber, DoubleThreadWriter doubleThreadWriter) {
+        this.threadNumber = threadNumber;
+        this.doubleThreadWriter = doubleThreadWriter;
     }
 
     @Override
     public void run() {
         while(true) {
             try {
-                orderedWriter.write(accessNumber, counter);
+                doubleThreadWriter.write(threadNumber, counter);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
