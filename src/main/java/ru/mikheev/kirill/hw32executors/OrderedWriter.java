@@ -18,10 +18,10 @@ public class OrderedWriter {
         }
     }
 
-    public void write(int accessNumber, String stringToWrite) throws InterruptedException {
+    public void write(int accessNumber, int intToWrite) throws InterruptedException {
         lock.lock();
         while(accessNumber != accessQueue.peek()) writeReleaseCondition.await();
-        System.out.println("Thread " + accessNumber + " : " + stringToWrite);
+        System.out.println("Thread " + accessNumber + " : " + intToWrite);
         accessQueue.add(accessQueue.remove());
         writeReleaseCondition.signalAll();
         lock.unlock();

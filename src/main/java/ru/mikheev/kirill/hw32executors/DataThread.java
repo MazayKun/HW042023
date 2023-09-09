@@ -6,6 +6,7 @@ public class DataThread extends Thread {
     private final OrderedWriter orderedWriter;
 
     private boolean reversed = false;
+    private int counter = 1;
 
     public DataThread(int accessNumber, OrderedWriter orderedWriter) {
         this.accessNumber = accessNumber;
@@ -14,23 +15,19 @@ public class DataThread extends Thread {
 
     @Override
     public void run() {
-        StringBuilder resultBuilder = new StringBuilder();
         while(true) {
-            resultBuilder.setLength(0);
-            if(reversed) {
-                for(int i = 10; i >= 1; i--) {
-                    resultBuilder.append(i).append(' ');
-                }
-            }else{
-                for(int i = 1; i <= 10; i++) {
-                    resultBuilder.append(i).append(' ');
-                }
-            }
-            reversed = !reversed;
             try {
-                orderedWriter.write(accessNumber, resultBuilder.toString());
+                orderedWriter.write(accessNumber, counter);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
+            }
+            if(reversed) {
+                counter--;
+            }else{
+                counter++;
+            }
+            if(counter == 10 || counter == 1) {
+                reversed = !reversed;
             }
         }
     }
