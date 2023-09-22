@@ -5,9 +5,9 @@ import ru.mikheev.kirill.hw33publisher.publishersubscriber.CollectionOperationsE
 import java.util.*;
 
 /**
- * Реализация ArrayList, которая публикует события об изменении состояния коллекции
+ * ArrayList realization, that publish events about array content change
  *
- * @param <T> - тип хранимых элементов
+ * @param <T> - array elements type
  */
 public class EventPublishingSupportedArrayList<T> extends EventPublishingSupportedCollection implements List<T> {
 

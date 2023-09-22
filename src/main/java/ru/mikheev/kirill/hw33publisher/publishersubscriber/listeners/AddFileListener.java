@@ -6,12 +6,12 @@ import ru.mikheev.kirill.hw33publisher.publishersubscriber.events.AddEvent;
 import java.io.*;
 
 /**
- * Сохраняет события о добавлении элементов в коллекцию в файл
+ * Print events about adding new elements to collection in file
  */
 public class AddFileListener implements EventListener<AddEvent> {
 
     /**
-     * Файл, в который будут выводиться события
+     * File, into witch events will be output
      */
     private final File outputFile;
 

@@ -6,26 +6,27 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Событие, связанное с коллекцией
+ * Event connected with collection
  */
 public abstract class CollectionEvent {
 
     /**
-     * Формат строкового представления события
+     * String format for event
      */
     private static final String FORMATTED_RESULT = "%s - Event with type %s on collection %s with content {%s}";
 
     /**
-     * Формат представления даты и времени при конвертации события в строку
+     * String format for time stamp
      */
     private static final DateTimeFormatter TIME_STAMP_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     /**
-     * Время, когда было создано событие
+     * Event creation time
      */
     private final LocalDateTime timeStamp;
+
     /**
-     * Имя коллекции, над которой проводилась операция
+     * Name of collection on which operation was performed
      */
     private final String collectionName;
 
@@ -35,21 +36,21 @@ public abstract class CollectionEvent {
     }
 
     /**
-     * @return Время, когда было создано событие
+     * @return event creation time
      */
     public LocalDateTime getTimeStamp() {
         return this.timeStamp;
     }
 
     /**
-     * @return Время, когда было создано событие, в формате строки
+     * @return event creation time as a string
      */
     public String getTimeStampString() {
         return TIME_STAMP_FORMATTER.format(this.timeStamp);
     }
 
     /**
-     * @return Имя коллекции, над которой проводилась операция
+     * @return name of collection on which operation was performed
      */
     public String getCollectionName() {
         return collectionName;
@@ -67,12 +68,12 @@ public abstract class CollectionEvent {
     }
 
     /**
-     * @return Тип события в формате строки
+     * @return event type as a string
      */
     protected abstract String getEventTypeCode();
 
     /**
-     * @return Наполнение события в формате строки
+     * @return event content as a string
      */
     public abstract String getEventContentAsString();
 }

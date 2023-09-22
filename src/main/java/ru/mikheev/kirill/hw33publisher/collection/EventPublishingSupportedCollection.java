@@ -3,18 +3,19 @@ package ru.mikheev.kirill.hw33publisher.collection;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Коллекция, которая поддерживает публикацию событий об изменении своего состояния
+ * Collection, that supports event publishing about content change
  */
 public abstract class EventPublishingSupportedCollection {
 
     /**
-     * Счетчик созданных коллекций
-     * Нужен для формирования имени коллекции
+     *
+     * Created collections counter
+     * Required for collection instance name generation
      */
     private static final AtomicInteger INSTANCE_COUNTER = new AtomicInteger();
 
     /**
-     * Имя конкретной коллекции
+     * Collection instance name
      */
     private final String collectionName;
 
@@ -23,12 +24,12 @@ public abstract class EventPublishingSupportedCollection {
     }
 
     /**
-     * @return строковое название коллекции для формирования имени
+     * @return collection type as a string
      */
     abstract String getCollectionType();
 
     /**
-     * @return имя конкретного экземпляра коллекции
+     * @return collection instance name
      */
     public String getCollectionName() {
         return collectionName;

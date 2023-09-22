@@ -1,16 +1,14 @@
 package ru.mikheev.kirill.hw33publisher.publishersubscriber;
 
 /**
- * Слушатель событий
- *
- * @param <E> - тип событий, которые обрабатывает данный слушатель
+ * @param <E> - event type, which handled by listener
  */
 public interface EventListener<E extends CollectionEvent> {
 
     /**
-     * Уведомить слушателя о новом событии
+     * Notify listener about new event
      *
-     * @param event - событие, которое нужно обработать
+     * @param event - event to handle
      */
     void notify(E event);
 }

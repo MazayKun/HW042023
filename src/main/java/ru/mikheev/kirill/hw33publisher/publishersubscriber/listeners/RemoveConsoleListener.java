@@ -4,7 +4,7 @@ import ru.mikheev.kirill.hw33publisher.publishersubscriber.EventListener;
 import ru.mikheev.kirill.hw33publisher.publishersubscriber.events.RemoveEvent;
 
 /**
- * Выводит в консоль события удаления элементов из коллекции
+ * Print events about removing elements from collection in console
  */
 public class RemoveConsoleListener implements EventListener<RemoveEvent> {
 

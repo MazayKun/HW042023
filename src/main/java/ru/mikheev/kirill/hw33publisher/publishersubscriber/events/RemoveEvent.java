@@ -4,12 +4,12 @@ import ru.mikheev.kirill.hw33publisher.collection.EventPublishingSupportedCollec
 import ru.mikheev.kirill.hw33publisher.publishersubscriber.CollectionEvent;
 
 /**
- * Событие удаления элемента из коллекции
+ * Removing element from collection event
  */
 public class RemoveEvent extends CollectionEvent {
 
     /**
-     * Удаленный элемент
+     * Removed element
      */
     private final Object removeElement;
 

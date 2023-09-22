@@ -4,12 +4,12 @@ import ru.mikheev.kirill.hw33publisher.collection.EventPublishingSupportedCollec
 import ru.mikheev.kirill.hw33publisher.publishersubscriber.CollectionEvent;
 
 /**
- * Событие добавления нового элемента в коллекцию
+ * Adding new element to collection event
  */
 public class AddEvent extends CollectionEvent {
 
     /**
-     * Новый элемент
+     * New element
      */
     private final Object addedElement;
 

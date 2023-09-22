@@ -6,12 +6,12 @@ import ru.mikheev.kirill.hw33publisher.publishersubscriber.events.RemoveEvent;
 import java.io.*;
 
 /**
- * Записывает в файл события удаления элементов из коллекции
+ * Print events about removing elements from collection in file
  */
 public class RemoveFileListener implements EventListener<RemoveEvent> {
 
     /**
-     * Файл, в который будут выводиться события
+     * File, into witch events will be output
      */
     private final File outputFile;
 

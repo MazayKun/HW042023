@@ -4,7 +4,7 @@ import ru.mikheev.kirill.hw33publisher.publishersubscriber.EventListener;
 import ru.mikheev.kirill.hw33publisher.publishersubscriber.events.AddEvent;
 
 /**
- * Выводит события о добавлении элементов в коллекцию в консоль
+ * Print events about adding new elements to collection in console
  */
 public class AddConsoleListener implements EventListener<AddEvent> {
 

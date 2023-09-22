@@ -14,7 +14,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * Предназначен для публикации событий об операциях, проводимых над коллекциями
+ * Publish collection modification events
  */
 public class CollectionOperationsEventPublisher {
 
@@ -32,10 +32,10 @@ public class CollectionOperationsEventPublisher {
     }
 
     /**
-     * Публикация события о том, что элемент был удален из коллекции
+     * Publish element removed from collection event
      *
-     * @param collection    - коллекция, над которой проводилась операция
-     * @param removedObject - удаленный эелмент
+     * @param collection    - collection on which operation was performed
+     * @param removedObject - removed element
      */
     public void publishRemove(EventPublishingSupportedCollection collection, Object removedObject) {
         eventsQueue.add(new RemoveEvent(collection, removedObject));
@@ -43,10 +43,10 @@ public class CollectionOperationsEventPublisher {
     }
 
     /**
-     * Публикация события о том, что элемент был добавлен в коллекцию
+     * Publish element added to collection event
      *
-     * @param collection  - коллекция, над которой проводилась операция
-     * @param addedObject - добавленный элемент
+     * @param collection  - collection on which operation was performed
+     * @param addedObject - added element
      */
     public void publishAdd(EventPublishingSupportedCollection collection, Object addedObject) {
         eventsQueue.add(new AddEvent(collection, addedObject));
@@ -54,9 +54,9 @@ public class CollectionOperationsEventPublisher {
     }
 
     /**
-     * Запустить новый поток обработки событий
+     * Start new events processing thread
      *
-     * @throws RuntimeException если уже имеется поток обработки событий
+     * @throws RuntimeException if such thread already exists
      */
     public void startPublisher() {
         if (workerThread != null) throw new RuntimeException("Worker thread already exists");
@@ -78,32 +78,32 @@ public class CollectionOperationsEventPublisher {
     }
 
     /**
-     * Останавливает поток обработки событий
+     * Stop events processing thread
      */
     public void stopPublisher() {
         workerThread = null;
     }
 
     /**
-     * Подписывает новый обработчик событий об удалении элемента из коллекции
+     * Subscribe new remove element from collection event listener
      *
-     * @param newListener - обработчик, который нужно подписать
+     * @param newListener - handler to subscribe
      */
     public void subscribeRemoveEventListener(EventListener<RemoveEvent> newListener) {
         removeEventListeners.add(newListener);
     }
 
     /**
-     * Подписывает новый обработчик событий о добавлении нового элемента в коллекции
+     * Subscribe new add element to collection event listener
      *
-     * @param newListener - обработчик, который нужно подписать
+     * @param newListener - handler to subscribe
      */
     public void subscribeAddEventListener(EventListener<AddEvent> newListener) {
         addEventListeners.add(newListener);
     }
 
     /**
-     * Сигнализирует потоку обработки событий о том, что появилось новое событие
+     * Signal event processing thread, that there are new events to process
      */
     private void newEventSignal() {
         workerLock.lock();
@@ -112,7 +112,7 @@ public class CollectionOperationsEventPublisher {
     }
 
     /**
-     * Обрабатывает все доступные на данный момент события
+     * Process all available events from event queue
      */
     private void processAllAvailableEvents() {
         CollectionEvent event;
