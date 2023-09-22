@@ -34,7 +34,7 @@ public class CollectionOperationsEventPublisher {
     /**
      * Публикация события о том, что элемент был удален из коллекции
      *
-     * @param collection - коллекция, над которой проводилась операция
+     * @param collection    - коллекция, над которой проводилась операция
      * @param removedObject - удаленный эелмент
      */
     public void publishRemove(EventPublishingSupportedCollection collection, Object removedObject) {
@@ -45,7 +45,7 @@ public class CollectionOperationsEventPublisher {
     /**
      * Публикация события о том, что элемент был добавлен в коллекцию
      *
-     * @param collection - коллекция, над которой проводилась операция
+     * @param collection  - коллекция, над которой проводилась операция
      * @param addedObject - добавленный элемент
      */
     public void publishAdd(EventPublishingSupportedCollection collection, Object addedObject) {
@@ -55,14 +55,15 @@ public class CollectionOperationsEventPublisher {
 
     /**
      * Запустить новый поток обработки событий
+     *
      * @throws RuntimeException если уже имеется поток обработки событий
      */
     public void startPublisher() {
-        if(workerThread != null) throw new RuntimeException("Worker thread already exists");
+        if (workerThread != null) throw new RuntimeException("Worker thread already exists");
         this.workerThread = new Thread(() -> {
             try {
                 while (Thread.currentThread() == workerThread) {
-                    if(!eventsQueue.isEmpty()) processAllAvailableEvents();
+                    if (!eventsQueue.isEmpty()) processAllAvailableEvents();
                     workerLock.lock();
                     newEventAvailableCondition.await(500L, TimeUnit.MILLISECONDS);
                     workerLock.unlock();
@@ -85,6 +86,7 @@ public class CollectionOperationsEventPublisher {
 
     /**
      * Подписывает новый обработчик событий об удалении элемента из коллекции
+     *
      * @param newListener - обработчик, который нужно подписать
      */
     public void subscribeRemoveEventListener(EventListener<RemoveEvent> newListener) {
@@ -93,6 +95,7 @@ public class CollectionOperationsEventPublisher {
 
     /**
      * Подписывает новый обработчик событий о добавлении нового элемента в коллекции
+     *
      * @param newListener - обработчик, который нужно подписать
      */
     public void subscribeAddEventListener(EventListener<AddEvent> newListener) {
@@ -113,15 +116,15 @@ public class CollectionOperationsEventPublisher {
      */
     private void processAllAvailableEvents() {
         CollectionEvent event;
-        while((event = eventsQueue.poll()) != null) {
-            if(event instanceof AddEvent addEvent) {
-                for(var listener : addEventListeners) {
+        while ((event = eventsQueue.poll()) != null) {
+            if (event instanceof AddEvent addEvent) {
+                for (var listener : addEventListeners) {
                     listener.notify(addEvent);
                 }
             }
 
-            if(event instanceof RemoveEvent removeEvent) {
-                for(var listener : removeEventListeners) {
+            if (event instanceof RemoveEvent removeEvent) {
+                for (var listener : removeEventListeners) {
                     listener.notify(removeEvent);
                 }
             }

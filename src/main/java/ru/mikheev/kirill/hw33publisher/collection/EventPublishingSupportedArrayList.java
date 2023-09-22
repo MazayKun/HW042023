@@ -6,6 +6,7 @@ import java.util.*;
 
 /**
  * Реализация ArrayList, которая публикует события об изменении состояния коллекции
+ *
  * @param <T> - тип хранимых элементов
  */
 public class EventPublishingSupportedArrayList<T> extends EventPublishingSupportedCollection implements List<T> {
@@ -26,7 +27,7 @@ public class EventPublishingSupportedArrayList<T> extends EventPublishingSupport
     public EventPublishingSupportedArrayList(Collection<? extends T> collection, CollectionOperationsEventPublisher eventPublisher) {
         list = new ArrayList<>(collection);
         this.eventPublisher = eventPublisher;
-        for(var elem : list) {
+        for (var elem : list) {
             publishAdd(elem);
         }
     }
@@ -80,7 +81,7 @@ public class EventPublishingSupportedArrayList<T> extends EventPublishingSupport
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        for(var elem : c) {
+        for (var elem : c) {
             publishAdd(elem);
         }
         return list.addAll(c);
@@ -88,7 +89,7 @@ public class EventPublishingSupportedArrayList<T> extends EventPublishingSupport
 
     @Override
     public boolean addAll(int index, Collection<? extends T> c) {
-        for(var elem : c) {
+        for (var elem : c) {
             publishAdd(elem);
         }
         return list.addAll(index, c);
@@ -96,7 +97,7 @@ public class EventPublishingSupportedArrayList<T> extends EventPublishingSupport
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        for(var elem : c) {
+        for (var elem : c) {
             publishRemove(elem);
         }
         return list.removeAll(c);
@@ -106,16 +107,16 @@ public class EventPublishingSupportedArrayList<T> extends EventPublishingSupport
     public boolean retainAll(Collection<?> c) {
         Object[] originalArray = list.toArray();
         boolean result = list.retainAll(c);
-        if(result) {
+        if (result) {
             int i = 0;
-            for(var elem : list) {
-                while(i < originalArray.length && !originalArray[i].equals(elem)) {
+            for (var elem : list) {
+                while (i < originalArray.length && !originalArray[i].equals(elem)) {
                     publishRemove(originalArray[i]);
                     i++;
                 }
                 i++;
             }
-            for(; i < originalArray.length; i++)
+            for (; i < originalArray.length; i++)
                 publishRemove(originalArray[i]);
         }
         return result;
@@ -123,7 +124,7 @@ public class EventPublishingSupportedArrayList<T> extends EventPublishingSupport
 
     @Override
     public void clear() {
-        for(var elem : list) {
+        for (var elem : list) {
             publishRemove(elem);
         }
         list.clear();
@@ -138,7 +139,7 @@ public class EventPublishingSupportedArrayList<T> extends EventPublishingSupport
     public T set(int index, T element) {
         publishAdd(element);
         T oldElem = list.set(index, element);
-        if(oldElem != null) {
+        if (oldElem != null) {
             publishRemove(oldElem);
         }
         return oldElem;

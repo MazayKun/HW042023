@@ -22,7 +22,7 @@ public class AddFileListener implements EventListener<AddEvent> {
 
     @Override
     public void notify(AddEvent event) {
-        try(Writer fileWriter = new BufferedWriter(new FileWriter(outputFile, true))) {
+        try (Writer fileWriter = new BufferedWriter(new FileWriter(outputFile, true))) {
             fileWriter.write(event.toString());
             fileWriter.write("\n");
         } catch (IOException e) {

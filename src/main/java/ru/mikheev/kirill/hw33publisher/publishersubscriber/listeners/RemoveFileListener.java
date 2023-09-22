@@ -22,7 +22,7 @@ public class RemoveFileListener implements EventListener<RemoveEvent> {
 
     @Override
     public void notify(RemoveEvent event) {
-        try(Writer fileWriter = new BufferedWriter(new FileWriter(outputFile, true))) {
+        try (Writer fileWriter = new BufferedWriter(new FileWriter(outputFile, true))) {
             fileWriter.write(event.toString());
             fileWriter.write("\n");
         } catch (IOException e) {

@@ -1,7 +1,7 @@
 package ru.mikheev.kirill.hw33publisher.publishersubscriber.events;
 
-import ru.mikheev.kirill.hw33publisher.publishersubscriber.CollectionEvent;
 import ru.mikheev.kirill.hw33publisher.collection.EventPublishingSupportedCollection;
+import ru.mikheev.kirill.hw33publisher.publishersubscriber.CollectionEvent;
 
 /**
  * Событие добавления нового элемента в коллекцию
