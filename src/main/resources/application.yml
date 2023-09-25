@@ -1,4 +1,5 @@
 config:
+  port: 8080
   concurrency: 16
 uri:
   - /hello:hello-world-page.html
