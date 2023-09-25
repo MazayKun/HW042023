@@ -20,10 +20,10 @@ public class PropertiesReader {
 
     public ServerProperties read(String fileName) {
         InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream(fileName);
-        if(isNull(resourceStream)) throw new RuntimeException("Properties file not found");
+        if (isNull(resourceStream)) throw new RuntimeException("Properties file not found");
         try (InputStream propertiesStream = new BufferedInputStream(
                 resourceStream
-        )){
+        )) {
             return yamlReader.load(propertiesStream);
         } catch (IOException e) {
             throw new PropertiesReadException(fileName, e);

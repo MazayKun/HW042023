@@ -20,9 +20,9 @@ public class RequestProcessor {
 
     public RequestProcessor(ServerProperties serverProperties) {
         pagesMapping = new HashMap<>();
-        for(String solidMapping : serverProperties.getUri()) {
+        for (String solidMapping : serverProperties.getUri()) {
             String[] mappingAsArray = solidMapping.split(":");
-            if(mappingAsArray.length != 2) throw new WrongUriMappingFormatException(mappingAsArray);
+            if (mappingAsArray.length != 2) throw new WrongUriMappingFormatException(mappingAsArray);
             pagesMapping.put(mappingAsArray[0], mappingAsArray[1]);
         }
     }
@@ -35,10 +35,10 @@ public class RequestProcessor {
      */
     public String getPageByRequest(BufferedReader request) throws IOException {
         String[] firstLineComponents = request.readLine().split(" ");
-        if(!"GET".equals(firstLineComponents[0])) throw new RuntimeException("Bad request method");
-        if(!"HTTP/1.1".equals(firstLineComponents[2])) throw new RuntimeException("Bad protocol name");
+        if (!"GET".equals(firstLineComponents[0])) throw new RuntimeException("Bad request method");
+        if (!"HTTP/1.1".equals(firstLineComponents[2])) throw new RuntimeException("Bad protocol name");
         String pageName = pagesMapping.get(firstLineComponents[1]);
-        if(isNull(pageName)) {
+        if (isNull(pageName)) {
             throw new PageNotFoundException();
         }
         return pageName;

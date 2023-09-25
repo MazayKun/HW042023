@@ -19,11 +19,11 @@ public class ServerProperties {
     private List<String> uri;
 
     public void updateForDefault() {
-        if(isNull(config)) {
+        if (isNull(config)) {
             config = new Config();
         }
         config.updateForDefault();
-        if(isNull(uri)) {
+        if (isNull(uri)) {
             uri = Collections.emptyList();
         }
     }

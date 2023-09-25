@@ -48,7 +48,7 @@ public class PageResolver {
         StringBuilder pageStringBuilder = new StringBuilder();
         InputStream resourceStream = this.getClass().getClassLoader()
                 .getResourceAsStream(PAGES_DIRECTORY + '/' + pageName);
-        if(resourceStream == null) {
+        if (resourceStream == null) {
             throw new PageNotFoundException();
         }
         try (BufferedReader pageReader = new BufferedReader(new InputStreamReader(
@@ -67,8 +67,8 @@ public class PageResolver {
     private void initErrorPage() {
         pagesContent.put(ERROR_PAGE_KEY,
                 "<html><body>" +
-                "%s" +
-                "</body></html>"
+                        "%s" +
+                        "</body></html>"
         );
     }
 }

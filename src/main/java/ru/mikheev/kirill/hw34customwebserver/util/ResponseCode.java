@@ -5,7 +5,7 @@ package ru.mikheev.kirill.hw34customwebserver.util;
  */
 public final class ResponseCode {
 
-    public static final  int OK_CODE = 200;
+    public static final int OK_CODE = 200;
     public static final String OK_MESSAGE = "OK";
 
     public static final int NOT_FOUND_CODE = 404;
@@ -15,5 +15,6 @@ public final class ResponseCode {
     public static final String INTERNAL_SERVER_ERROR_MESSAGE = "Internal Server Error";
 
 
-    private ResponseCode(){}
+    private ResponseCode() {
+    }
 }

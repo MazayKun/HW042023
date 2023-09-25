@@ -20,11 +20,11 @@ public class Response {
     private static final String TEXT_HTML_CONTENT_TYPE = "text/html; charset=UTF-8";
 
     private final String protocolName;
+    private final Map<String, String> headers = new HashMap<>();
     @Setter(AccessLevel.PRIVATE)
     private int responseCode;
     @Setter(AccessLevel.PRIVATE)
     private String responseMessage;
-    private final Map<String, String> headers = new HashMap<>();
     private String body;
 
     private Response() {
@@ -85,7 +85,7 @@ public class Response {
         sb.append(protocolName).append(' ').append(responseCode).append(' ').append(responseMessage);
         sb.append('\n');
         headers.forEach((name, value) -> sb.append(name).append(": ").append(value).append('\n'));
-        if(nonNull(body)) {
+        if (nonNull(body)) {
             sb.append('\n');
             sb.append(body);
         }

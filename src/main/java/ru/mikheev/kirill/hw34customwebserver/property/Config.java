@@ -20,10 +20,10 @@ public class Config {
     private Integer concurrency;
 
     public void updateForDefault() {
-        if(isNull(port)) {
+        if (isNull(port)) {
             port = DEFAULT_PORT;
         }
-        if(isNull(concurrency)) {
+        if (isNull(concurrency)) {
             concurrency = DEFAULT_CONCURRENCY;
         }
     }

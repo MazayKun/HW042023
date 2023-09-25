@@ -35,7 +35,7 @@ public class Server {
     }
 
     public void startServer() {
-        if(serverSocket != null) {
+        if (serverSocket != null) {
             throw new RuntimeException("Server already started");
         }
         try {
@@ -50,7 +50,7 @@ public class Server {
 
     private void listenPort() {
         try {
-            while(true) {
+            while (true) {
                 Socket newConnection = serverSocket.accept();
                 connectionHandlerPool.execute(() -> handleConnection(newConnection));
             }
