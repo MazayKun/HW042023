@@ -1,0 +1,6 @@
+config:
+  concurrency: 16
+uri:
+  - /hello:hello-world-page.html
+  - /:init-page.html
+  - /next:next-page.html
