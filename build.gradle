@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id("io.freefair.lombok") version "8.3"
     id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
@@ -16,6 +17,8 @@ repositories {
 dependencies {
 
     implementation("com.google.guava:guava:${GUAVA_VERSION}")
+    implementation group: 'org.yaml', name: 'snakeyaml', version: '2.1'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
